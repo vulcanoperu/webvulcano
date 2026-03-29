@@ -51,6 +51,7 @@
     align-items: center;
     justify-content: center;
     min-height: 1.2em;
+    white-space: nowrap;
 }
 
 .cursor {
