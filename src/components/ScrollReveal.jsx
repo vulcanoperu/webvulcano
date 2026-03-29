@@ -17,16 +17,20 @@ const ScrollReveal = () => {
 
         // Target relevant elements for animation
         const selectors = [
-            'section',
             'h1', 'h2', 'h3',
             'p',
+            '.section-tag',
+            '.section-header',
             '.service-card',
             '.project-card-minimal',
             '.btn-glow',
+            '.btn-primary',
+            '.btn-secondary',
             '.service-item',
             '.value-card',
             '.team-card',
-            '.info-card'
+            '.info-card',
+            '.cta-content'
         ]
 
         // Timeout to ensure DOM is ready after navigation
