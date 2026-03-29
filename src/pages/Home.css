@@ -50,8 +50,10 @@
     display: inline-block;
     opacity: 0;
     transform: translateY(20px);
-    animation: smoothEntry 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay: 0.1s;
+    /* Se encadenan dos animaciones: la entrada (1s) y luego una animación constante infinita (comienza tras 1s) */
+    animation: 
+        smoothEntry 1s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        constantBreath 5s ease-in-out infinite 1s;
 }
 
 @keyframes smoothEntry {
@@ -62,6 +64,16 @@
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes constantBreath {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.02);
+        color: rgba(255, 255, 255, 0.8);
     }
 }
 
