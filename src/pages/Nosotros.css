@@ -1,0 +1,161 @@
+.mission-section {
+    margin: 80px 0;
+}
+
+.mission-content {
+    padding: 80px 60px;
+    text-align: center;
+}
+
+.mission-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.mission-content p {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Values */
+.values-section {
+    margin: 100px 0;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.value-card {
+    padding: 50px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(124, 77, 255, 0.4);
+}
+
+.value-icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.value-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.value-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Team */
+.team-section {
+    margin: 100px 0;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.team-card {
+    padding: 40px 30px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(124, 77, 255, 0.4);
+}
+
+.team-count {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.team-role {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Experience */
+.experience-section {
+    margin: 100px 0;
+}
+
+.experience-content {
+    padding: 80px 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 40px;
+}
+
+.experience-stat {
+    text-align: center;
+}
+
+.stat-big {
+    display: block;
+    font-size: 4rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+@media (max-width: 968px) {
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .experience-content {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .mission-content {
+        padding: 50px 30px;
+    }
+
+    .value-card {
+        padding: 30px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,128 @@
+/* Minimalist Editorial Layout - Refined */
+.services-list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+
+.service-item {
+    padding: 100px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: grid;
+    grid-template-columns: 80px 1.5fr 1fr;
+    /* Adjusted proportions */
+    gap: 80px;
+    align-items: flex-start;
+    transition: all 0.4s ease;
+}
+
+.service-item:hover {
+    border-bottom-color: var(--accent-primary);
+}
+
+/* Column 1: Number */
+.service-number {
+    font-size: 1.1rem;
+    font-family: 'Courier New', monospace;
+    /* Explicit monospace for tech feel */
+    color: var(--accent-secondary);
+    font-weight: 500;
+    opacity: 0.8;
+    margin-top: 10px;
+    /* Align with title baseline approx */
+}
+
+/* Column 2: Content (Title + Desc) */
+.service-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.service-content h2 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    /* Lighter weight for elegance */
+    margin: 0;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+    letter-spacing: -0.02em;
+}
+
+.service-item:hover h2 {
+    color: var(--accent-primary);
+}
+
+.service-description {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 90%;
+    font-weight: 300;
+}
+
+/* Column 3: Features List */
+.service-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 5px;
+    /* Visual alignment */
+}
+
+.service-features li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    /* Muted text */
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 0;
+    transition: color 0.3s ease;
+}
+
+.service-features li:hover {
+    color: var(--text-primary);
+}
+
+.service-features li::before {
+    content: '—';
+    /* Mdash for minimal bullet */
+    margin-right: 10px;
+    color: var(--accent-secondary);
+    opacity: 0.5;
+}
+
+.check {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .service-item {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 40px 0;
+    }
+
+    .service-number {
+        font-size: 0.9rem;
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+    .service-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .service-description {
+        max-width: 100%;
+    }
+
+    .service-features {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+    }
+}

@@ -1,0 +1,243 @@
+.breadcrumb {
+    margin-bottom: 40px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: var(--accent-secondary);
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.project-hero {
+    padding: 100px 60px;
+    border-radius: 24px;
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.project-category-badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.project-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 20px;
+}
+
+.project-meta {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.project-section {
+    margin-bottom: 60px;
+}
+
+.project-section h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.project-section p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.large-text {
+    font-size: 1.3rem !important;
+    line-height: 1.9 !important;
+}
+
+.project-section.glass {
+    padding: 50px;
+    border-radius: 24px;
+}
+
+/* Results Grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.result-card {
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.result-metric {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.result-label {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Tech Stack */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.tech-badge {
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Testimonial */
+.testimonial {
+    padding: 60px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+.author {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.author strong {
+    font-size: 1.1rem;
+}
+
+.author span {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Project Gallery */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.gallery-item {
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item:nth-child(3n+1) {
+    grid-column: span 2;
+    aspect-ratio: 21 / 9;
+}
+
+.gallery-item:not(:nth-child(3n+1)) {
+    aspect-ratio: 16 / 10;
+}
+
+/* CTA */
+.project-cta {
+    text-align: center;
+    padding: 80px 40px;
+    margin-top: 80px;
+}
+
+.project-cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.project-cta p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 968px) {
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-hero {
+        padding: 60px 30px;
+    }
+
+    .project-section.glass {
+        padding: 30px;
+    }
+
+    .testimonial {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item:nth-child(3n+1) {
+        grid-column: span 1;
+        aspect-ratio: 16 / 10;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-meta {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .project-meta span:nth-child(even) {
+        display: none;
+    }
+}
