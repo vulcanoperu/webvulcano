@@ -137,7 +137,7 @@ function Home() {
                 <div className="hero-content">
                     <span className="badge">Agencia Digital</span>
                     <h1 className="hero-title">
-                        <span style={{ whiteSpace: 'nowrap' }}>Estrategia, diseño y tecnología</span>
+                        <span className="hero-title-static" style={{ whiteSpace: 'nowrap' }}>Estrategia, diseño y tecnología</span>
                         <div className="typewriter-container">
                             <span className="gradient-text typewriter">{text || '\u00A0'}</span>
                             <span className="cursor">|</span>
