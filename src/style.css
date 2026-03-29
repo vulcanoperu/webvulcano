@@ -12,7 +12,7 @@
 
   /* Fonts */
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Outfit', var(--font-main);
+  --font-heading: 'Montserrat', var(--font-main);
 
   /* Spacing */
   --container-width: 1200px;
