@@ -175,7 +175,8 @@
     overflow: hidden;
     position: relative;
     width: 100%;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
+    padding: 20px 0 50px; /* Espacio para el efecto hover y la sombra */
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
