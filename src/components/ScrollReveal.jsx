@@ -29,8 +29,7 @@ const ScrollReveal = () => {
             '.service-item',
             '.value-card',
             '.team-card',
-            '.info-card',
-            '.cta-content'
+            '.info-card'
         ]
 
         // Timeout to ensure DOM is ready after navigation
