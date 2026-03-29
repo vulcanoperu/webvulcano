@@ -53,7 +53,7 @@
 .footer-services-list a,
 .footer-contact .email {
     color: var(--text-secondary);
-    font-size: 1rem;
+    font-size: 0.85rem;
     transition: color 0.3s ease;
 }
 
