@@ -8,6 +8,11 @@ function Home() {
     const [loopNum, setLoopNum] = useState(0);
     const [typingSpeed, setTypingSpeed] = useState(150);
 
+    const [ctaText, setCtaText] = useState('');
+    const [ctaIsDeleting, setCtaIsDeleting] = useState(false);
+    const [ctaLoopNum, setCtaLoopNum] = useState(0);
+    const [ctaTypingSpeed, setCtaTypingSpeed] = useState(150);
+
     const phrases = [
         "para vender más.",
         "para escalar tu negocio.",
@@ -40,6 +45,39 @@ function Home() {
 
         return () => clearInterval(ticker);
     }, [text, isDeleting, loopNum, typingSpeed]);
+
+    const ctaPhrases = [
+        "tu negocio?",
+        "tus ventas?",
+        "tu marca?",
+        "tu futuro?"
+    ];
+
+    useEffect(() => {
+        let ticker = setInterval(() => {
+            const i = ctaLoopNum % ctaPhrases.length;
+            const fullText = ctaPhrases[i];
+
+            if (ctaIsDeleting) {
+                setCtaText(fullText.substring(0, ctaText.length - 1));
+                setCtaTypingSpeed(40);
+            } else {
+                setCtaText(fullText.substring(0, ctaText.length + 1));
+                setCtaTypingSpeed(80);
+            }
+
+            if (!ctaIsDeleting && ctaText === fullText) {
+                setCtaIsDeleting(true);
+                setCtaTypingSpeed(3000);
+            } else if (ctaIsDeleting && ctaText === '') {
+                setCtaIsDeleting(false);
+                setCtaLoopNum(ctaLoopNum + 1);
+                setCtaTypingSpeed(500);
+            }
+        }, ctaTypingSpeed);
+
+        return () => clearInterval(ticker);
+    }, [ctaText, ctaIsDeleting, ctaLoopNum, ctaTypingSpeed]);
 
     const services = [
         {
@@ -149,7 +187,13 @@ function Home() {
             <section className="cta-section">
                 <div className="container">
                     <div className="cta-content glass">
-                        <h2>¿Listo para transformar tu negocio?</h2>
+                        <h2>
+                            <span style={{ whiteSpace: 'nowrap' }}>¿Listo para transformar</span>
+                            <div className="typewriter-container">
+                                <span className="gradient-text typewriter">{ctaText || '\u00A0'}</span>
+                                <span className="cursor">|</span>
+                            </div>
+                        </h2>
                         <p>Conversemos sobre cómo podemos ayudarte a alcanzar tus objetivos.</p>
                         <Link to="/contacto" className="btn-primary">Agenda una consulta</Link>
                     </div>
