@@ -131,13 +131,16 @@ function Home() {
 
         let animationFrameId;
         let isHovered = false;
+        let isDragging = false;
+        let startX;
+        let scrollLeft;
+        let dragged = false;
 
         const play = () => {
-            if (!isHovered) {
+            if (!isHovered && !isDragging) {
                 slider.scrollLeft += 1;
                 
-                // When we've scrolled exactly one set of cards (1/3 of the total scrollable width)
-                // we reset back to 0. Since the sets are identical, the reset is invisible.
+                // Reset half-way for infinite loop
                 if (slider.scrollLeft >= slider.scrollWidth / 3) {
                     slider.scrollLeft -= slider.scrollWidth / 3;
                 }
@@ -147,15 +150,64 @@ function Home() {
 
         animationFrameId = requestAnimationFrame(play);
 
-        const handleMouseEnter = () => (isHovered = true);
-        const handleMouseLeave = () => (isHovered = false);
-        const handleTouchStart = () => (isHovered = true);
-        const handleTouchEnd = () => (isHovered = false);
+        // Hover & Touch (Pause autoplay)
+        const handleMouseEnter = () => { isHovered = true; };
+        const handleMouseLeave = () => { 
+            isHovered = false; 
+            isDragging = false;
+            slider.style.cursor = 'grab';
+        };
+        const handleTouchStart = () => { isHovered = true; };
+        const handleTouchEnd = () => { isHovered = false; };
+
+        // Desktop Drag to scroll
+        const handleMouseDown = (e) => {
+            isDragging = true;
+            isHovered = true;
+            dragged = false; // Reset drag status on new click
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+            slider.style.cursor = 'grabbing';
+            // Previene que se seleccione el texto al arrastrar
+            document.body.style.userSelect = 'none';
+        };
+
+        const handleMouseUp = () => {
+            isDragging = false;
+            slider.style.cursor = 'grab';
+            document.body.style.userSelect = '';
+        };
+
+        const handleMouseMove = (e) => {
+            if (!isDragging) return;
+            dragged = true; // El usuario se movió, es un arrastre (no un solo click)
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; // Velocidad de arrastre * 2
+            slider.scrollLeft = scrollLeft - walk;
+        };
+
+        // Evitar activar el enlace (Link) si solo se quería arrastrar (drag)
+        const handleClick = (e) => {
+            if (dragged) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        };
 
         slider.addEventListener('mouseenter', handleMouseEnter);
         slider.addEventListener('mouseleave', handleMouseLeave);
         slider.addEventListener('touchstart', handleTouchStart, { passive: true });
         slider.addEventListener('touchend', handleTouchEnd);
+
+        slider.addEventListener('mousedown', handleMouseDown);
+        slider.addEventListener('mouseup', handleMouseUp);
+        slider.addEventListener('mousemove', handleMouseMove);
+        // Usamos capture=true para cancelar el evento click antes de que el Link reaccione
+        slider.addEventListener('click', handleClick, true);
+
+        // Estado inicial de cursor para dar feedback visual de que se puede agarrar
+        slider.style.cursor = 'grab';
 
         return () => {
             cancelAnimationFrame(animationFrameId);
@@ -163,6 +215,11 @@ function Home() {
             slider.removeEventListener('mouseleave', handleMouseLeave);
             slider.removeEventListener('touchstart', handleTouchStart);
             slider.removeEventListener('touchend', handleTouchEnd);
+            
+            slider.removeEventListener('mousedown', handleMouseDown);
+            slider.removeEventListener('mouseup', handleMouseUp);
+            slider.removeEventListener('mousemove', handleMouseMove);
+            slider.removeEventListener('click', handleClick, true);
         };
     }, []);
 
