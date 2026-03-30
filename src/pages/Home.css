@@ -231,6 +231,8 @@
     -webkit-overflow-scrolling: touch;
     scroll-behavior: auto;
     scrollbar-width: none; /* Firefox */
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .slider-container::-webkit-scrollbar {
