@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './Home.css'
 
 function Home() {
+    const sliderRef = useRef(null);
     const [text, setText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
     const [loopNum, setLoopNum] = useState(0);
@@ -122,7 +123,48 @@ function Home() {
         }
     ];
 
-    const duplicatedServices = [...services, ...services];
+    const duplicatedServices = [...services, ...services, ...services]; // 3 sets for smooth infinite scroll
+
+    useEffect(() => {
+        const slider = sliderRef.current;
+        if (!slider) return;
+
+        let animationFrameId;
+        let isHovered = false;
+
+        const play = () => {
+            if (!isHovered) {
+                slider.scrollLeft += 1;
+                
+                // When we've scrolled exactly one set of cards (1/3 of the total scrollable width)
+                // we reset back to 0. Since the sets are identical, the reset is invisible.
+                if (slider.scrollLeft >= slider.scrollWidth / 3) {
+                    slider.scrollLeft -= slider.scrollWidth / 3;
+                }
+            }
+            animationFrameId = requestAnimationFrame(play);
+        };
+
+        animationFrameId = requestAnimationFrame(play);
+
+        const handleMouseEnter = () => (isHovered = true);
+        const handleMouseLeave = () => (isHovered = false);
+        const handleTouchStart = () => (isHovered = true);
+        const handleTouchEnd = () => (isHovered = false);
+
+        slider.addEventListener('mouseenter', handleMouseEnter);
+        slider.addEventListener('mouseleave', handleMouseLeave);
+        slider.addEventListener('touchstart', handleTouchStart, { passive: true });
+        slider.addEventListener('touchend', handleTouchEnd);
+
+        return () => {
+            cancelAnimationFrame(animationFrameId);
+            slider.removeEventListener('mouseenter', handleMouseEnter);
+            slider.removeEventListener('mouseleave', handleMouseLeave);
+            slider.removeEventListener('touchstart', handleTouchStart);
+            slider.removeEventListener('touchend', handleTouchEnd);
+        };
+    }, []);
 
     return (
         <div className="home">
@@ -164,7 +206,7 @@ function Home() {
                         <span className="section-tag">Lo que hacemos</span>
                         <h2 className="section-title">Soluciones integrales</h2>
                     </div>
-                    <div className="slider-container">
+                    <div className="slider-container" ref={sliderRef}>
                         <div className="slider-track">
                             {duplicatedServices.map((service, index) => (
                                 <div className="slide" key={index}>

@@ -223,23 +223,24 @@
 }
 
 .slider-container {
-    overflow: hidden;
+    overflow-x: auto;
     position: relative;
     width: 100%;
     margin-bottom: 20px;
     padding: 20px 0 50px; /* Espacio para el efecto hover y la sombra */
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto;
+    scrollbar-width: none; /* Firefox */
+}
+
+.slider-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
 }
 
 .slider-track {
     display: flex;
     width: max-content;
-    animation: scroll 40s linear infinite;
-}
-
-.slider-track:hover {
-    animation-play-state: paused;
+    padding: 0 5%;
 }
 
 .slide {
@@ -255,14 +256,7 @@
     flex-direction: column;
 }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
+
 
 .service-card {
     padding: 60px 40px;
