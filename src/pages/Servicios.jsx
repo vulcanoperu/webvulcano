@@ -1,7 +1,23 @@
 import { Link } from 'react-router-dom'
 import './Servicios.css'
 
+import { useEffect } from 'react'
+
 function Servicios() {
+    useEffect(() => {
+        if (window.location.hash) {
+            const id = window.location.hash.substring(1);
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        } else {
+            window.scrollTo(0, 0);
+        }
+    }, []);
+
     const services = [
         {
             number: '01',
@@ -71,7 +87,7 @@ function Servicios() {
 
                 <div className="services-list">
                     {services.map((service, index) => (
-                        <div key={index} className="service-item">
+                        <div key={index} id={`servicio-${service.number}`} className="service-item" style={{ scrollMarginTop: '100px' }}>
                             <span className="service-number">{service.number}</span>
                             <div className="service-content">
                                 <h2>{service.title}</h2>
