@@ -168,11 +168,11 @@ function Home() {
                         <div className="slider-track">
                             {duplicatedServices.map((service, index) => (
                                 <div className="slide" key={index}>
-                                    <div className="service-card glass">
+                                    <Link to="/servicios" className="service-card glass">
                                         <span className="service-number">{service.number}</span>
                                         <h3>{service.title}</h3>
                                         <p>{service.desc}</p>
-                                    </div>
+                                    </Link>
                                 </div>
                             ))}
                         </div>

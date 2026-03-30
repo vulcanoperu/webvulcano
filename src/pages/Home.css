@@ -70,6 +70,12 @@
         gradientSweep 4s linear infinite 1s;
 }
 
+@media (min-width: 769px) {
+    .hero-title-static {
+        white-space: nowrap;
+    }
+}
+
 @keyframes smoothEntry {
     0% {
         opacity: 0;
@@ -348,33 +354,6 @@
         width: 100%;
         max-width: 300px;
         margin: 0 auto;
-    }
-
-    /* Slider Tactile for Mobile */
-    .slider-container {
-        mask-image: none;
-        -webkit-mask-image: none;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 20px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
-    }
-
-    .slider-container::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
-    }
-
-    .slider-track {
-        animation: none; /* Desactivar animación en móviles para permitir swipe */
-        padding: 0 5%;
-    }
-
-    .slide {
-        width: 80vw;
-        max-width: 340px;
-        scroll-snap-align: center;
-        padding: 0 10px;
     }
 
     /* Solucionar textos cortados en móvil */
