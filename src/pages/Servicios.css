@@ -102,8 +102,8 @@
 @media (max-width: 968px) {
     .service-item {
         grid-template-columns: 1fr;
-        gap: 25px;
-        padding: 40px 0;
+        gap: 30px;
+        padding: 80px 0; /* Mayor espaciado entre servicios */
     }
 
     .service-number {
@@ -118,11 +118,11 @@
 
     .service-description {
         max-width: 100%;
+        line-height: 1.6;
     }
 
     .service-features {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px 20px;
+        flex-direction: column; /* Viñetas una debajo de otra */
+        gap: 12px;
     }
 }
