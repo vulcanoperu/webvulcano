@@ -329,12 +329,73 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .hero {
+        padding-top: 80px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.2rem, 5vw, 2.5rem);
+    }
+
     .stats .container {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .hero-actions {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    /* Slider Tactile for Mobile */
+    .slider-container {
+        mask-image: none;
+        -webkit-mask-image: none;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 20px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .slider-container::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+    .slider-track {
+        animation: none; /* Desactivar animación en móviles para permitir swipe */
+        padding: 0 5%;
+    }
+
+    .slide {
+        width: 80vw;
+        max-width: 340px;
+        scroll-snap-align: center;
+        padding: 0 10px;
+    }
+
+    /* Solucionar textos cortados en móvil */
+    .service-card h3 {
+        white-space: normal;
+        font-size: 1.3rem;
+    }
+
+    .service-card {
+        padding: 40px 25px; /* Espaciado interno más amplio y minimalista */
+    }
+
+    .services-preview {
+        padding: 60px 0;
+    }
+
+    .cta-section {
+        padding: 60px 0 80px;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
     }
 }
