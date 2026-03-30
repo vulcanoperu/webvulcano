@@ -137,7 +137,7 @@ function Home() {
                 <div className="hero-content">
                     <span className="badge">Agencia Digital</span>
                     <h1 className="hero-title">
-                        <span className="hero-title-static" style={{ whiteSpace: 'nowrap' }}>Estrategia, diseño y tecnología</span>
+                        <span className="hero-title-static">Estrategia, diseño y tecnología</span>
                         <div className="typewriter-container">
                             <span className="gradient-text typewriter">{text || '\u00A0'}</span>
                             <span className="cursor">|</span>
@@ -187,8 +187,8 @@ function Home() {
             <section className="cta-section">
                 <div className="container">
                     <div className="cta-content glass">
-                        <h2>
-                            <span style={{ whiteSpace: 'nowrap' }}>¿Listo para transformar</span>
+                        <h2 className="cta-title">
+                            <span>¿Listo para transformar</span>
                             <div className="typewriter-container">
                                 <span className="gradient-text typewriter">{ctaText || '\u00A0'}</span>
                                 <span className="cursor">|</span>
